@@ -258,10 +258,10 @@ int main(int argc, char *argv[])
 	printf("---------------------------------------------------------------------------------------------------\n");
 
 
-	int max_qualifier_name_length = 0;
-	int max_group_name_length = 0;
-	int max_metric_name_length = 0;
-	int max_metric_units_length = 0;
+	size_t max_qualifier_name_length = 0;
+	size_t max_group_name_length = 0;
+	size_t max_metric_name_length = 0;
+	size_t max_metric_units_length = 0;
 	for (i = 0; i < num_metrics; i++) {
 		if (strlen(metric_info[i].qualifier_name) > max_qualifier_name_length)
 			max_qualifier_name_length = strlen(metric_info[i].qualifier_name);
