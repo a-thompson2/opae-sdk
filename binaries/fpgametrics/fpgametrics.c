@@ -270,7 +270,13 @@ int main(int argc, char *argv[])
 			max_metric_units_length = strlen(metric_info[i].metric_units);
 	}
 
-	printf("---------------------------------------------------------------------------------------------------\n");
+	uint64_t table_width = 10 + max_qualifier_name_length + max_group_name_length +
+						max_metric_name_length + max_metric_units_length + 4*4; 
+
+	for (i = 0; i < table_width; i++) {
+		putchar('-');
+	}
+	putchar('\n');
 	printf("%-s    %-*s    %-*s    %-*s    %-*s\n",
 					"metric_num",
 					(int) max_qualifier_name_length,
@@ -281,7 +287,10 @@ int main(int argc, char *argv[])
 					"metric_name",
 					(int) max_metric_units_length,
 					"metric_units");
-	printf("---------------------------------------------------------------------------------------------------\n");
+	for (i = 0; i < table_width; i++) {
+		putchar('-');
+	}
+	putchar('\n');
 	
 	for (i = 0; i < num_metrics; i++) {
 
