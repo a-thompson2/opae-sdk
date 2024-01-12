@@ -277,13 +277,13 @@ int main(int argc, char *argv[])
 
 		printf("%-3ld  | %-*s  | %-*s  | %-*s  | %-*s \n",
 						metric_info[i].metric_num,
-						max_qualifier_name_length,
+						(int) max_qualifier_name_length,
 						metric_info[i].qualifier_name,
-						max_group_name_length,
+						(int) max_group_name_length,
 						metric_info[i].group_name,
-						max_metric_name_length,
+						(int) max_metric_name_length,
 						metric_info[i].metric_name,
-						max_metric_units_length,
+						(int) max_metric_units_length,
 						metric_info[i].metric_units);
 		id_array[i] = i;
 	}
