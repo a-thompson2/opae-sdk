@@ -263,14 +263,14 @@ int main(int argc, char *argv[])
 	int max_metric_name_length = 0;
 	int max_metric_units_length = 0;
 	for (i = 0; i < num_metrics; i++) {
-		if (metric_info[i].qualifier_name > max_qualifier_name_length)
-			max_qualifier_name_length = metric_info[i].qualifier_name;
-		if (metric_info[i].group_name > max_group_name_length)
-			max_group_name_length = metric_info[i].group_name;
-		if (metric_info[i].metric_name > max_metric_name_length)
-			max_metric_name_length = metric_info[i].metric_name;
-		if (metric_info[i].metric_units > max_metric_units_length)
-			max_metric_units_length = metric_info[i].metric_units;
+		if (strlen(metric_info[i].qualifier_name) > max_qualifier_name_length)
+			max_qualifier_name_length = strlen(metric_info[i].qualifier_name);
+		if (strlen(metric_info[i].group_name) > max_group_name_length)
+			max_group_name_length = strlen(metric_info[i].group_name);
+		if (strlen(metric_info[i].metric_name) > max_metric_name_length)
+			max_metric_name_length = strlen(metric_info[i].metric_name);
+		if (strlen(metric_info[i].metric_units) > max_metric_units_length)
+			max_metric_units_length = strlen(metric_info[i].metric_units);
 	}
 
 	for (i = 0; i < num_metrics; i++) {
