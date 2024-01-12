@@ -253,15 +253,12 @@ int main(int argc, char *argv[])
 		goto out_close;
 	}
 
-	printf("---------------------------------------------------------------------------------------------------\n");
-	printf("metric_num              qualifier_name      group_name             metric_name            metric_units\n");
-	printf("---------------------------------------------------------------------------------------------------\n");
 
-
-	size_t max_qualifier_name_length = 0;
-	size_t max_group_name_length = 0;
-	size_t max_metric_name_length = 0;
-	size_t max_metric_units_length = 0;
+	// initialize to the length of the column headers to maintain alignment
+	size_t max_qualifier_name_length = 14;
+	size_t max_group_name_length = 10;
+	size_t max_metric_name_length = 11;
+	size_t max_metric_units_length = 12;
 	for (i = 0; i < num_metrics; i++) {
 		if (strlen(metric_info[i].qualifier_name) > max_qualifier_name_length)
 			max_qualifier_name_length = strlen(metric_info[i].qualifier_name);
@@ -273,9 +270,22 @@ int main(int argc, char *argv[])
 			max_metric_units_length = strlen(metric_info[i].metric_units);
 	}
 
+	printf("---------------------------------------------------------------------------------------------------\n");
+	printf("%-s    %-*s    %-*s    %-*s    %-*s\n",
+					"metric_num",
+					(int) max_qualifier_name_length,
+					"qualifier_name",
+					(int) max_group_name_length,
+					"group_name",
+					(int) max_metric_name_length,
+					"metric_name",
+					(int) max_metric_units_length,
+					"metric_units");
+	printf("---------------------------------------------------------------------------------------------------\n");
+	
 	for (i = 0; i < num_metrics; i++) {
 
-		printf("%-3ld  | %-*s  | %-*s  | %-*s  | %-*s \n",
+		printf("%-10ld  | %-*s  | %-*s  | %-*s  | %-*s \n",
 						metric_info[i].metric_num,
 						(int) max_qualifier_name_length,
 						metric_info[i].qualifier_name,
