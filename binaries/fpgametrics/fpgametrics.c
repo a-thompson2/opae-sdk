@@ -257,13 +257,33 @@ int main(int argc, char *argv[])
 	printf("metric_num              qualifier_name      group_name             metric_name            metric_units\n");
 	printf("---------------------------------------------------------------------------------------------------\n");
 
+
+	int max_qualifier_name_length = 0;
+	int max_group_name_length = 0;
+	int max_metric_name_length = 0;
+	int max_metric_units_length = 0;
+	for (i = 0; i < num_metrics; i++) {
+		if (metric_info[i].qualifier_name > max_qualifier_name_length)
+			max_qualifier_name_length = metric_info[i].qualifier_name;
+		if (metric_info[i].group_name > max_group_name_length)
+			max_group_name_length = metric_info[i].group_name;
+		if (metric_info[i].metric_name > max_metric_name_length)
+			max_metric_name_length = metric_info[i].metric_name;
+		if (metric_info[i].metric_units > max_metric_units_length)
+			max_metric_units_length = metric_info[i].metric_units;
+	}
+
 	for (i = 0; i < num_metrics; i++) {
 
-		printf("%-3ld  | %-30s  | %-15s  | %-30s  | %-10s \n",
+		printf("%-3ld  | %-*s  | %-*s  | %-*s  | %-*s \n",
 						metric_info[i].metric_num,
+						max_qualifier_name_length,
 						metric_info[i].qualifier_name,
+						max_group_name_length,
 						metric_info[i].group_name,
+						max_metric_name_length,
 						metric_info[i].metric_name,
+						max_metric_units_length,
 						metric_info[i].metric_units);
 		id_array[i] = i;
 	}
