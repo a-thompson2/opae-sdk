@@ -367,6 +367,8 @@ done
 %{python3_sitelib}/ofs.uio*
 %{python3_sitelib}/uio*
 
+%check
+scripts/test-rpms.sh
 
 %changelog
 * Mon Dec 14 2020 The OPAE Dev Team <opae@lists.linuxfoundation.org> - 2.0.0-2
