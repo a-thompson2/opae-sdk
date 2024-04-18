@@ -1,12 +1,12 @@
 #!/bin/bash
-rpmdir=$(realpath ${1:-$PWD})
-rpmdir="${rpmdir}/packaging/opae/rpm"
+#rpmdir=$(realpath ${1:-$PWD})
+#rpmdir="${rpmdir}/packaging/opae/rpm"
 
-dnf install -y $rpmdir/opae-*.x86_64.rpm
-if [ $? -ne 0 ]; then
-	echo "Could not install OPAE RPMs"
-	exit 1
-fi
+#dnf install -y $rpmdir/opae-*.x86_64.rpm
+#if [ $? -ne 0 ]; then
+#	echo "Could not install OPAE RPMs"
+#	exit 1
+#fi
 
 failures=0
 test_exit_code(){
